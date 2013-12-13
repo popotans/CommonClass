@@ -1,0 +1,4 @@
+E:\Codelib\Git\CommonClass\CommonClass\bin\Debug\CommonClass.dll
+E:\Codelib\Git\CommonClass\CommonClass\bin\Debug\CommonClass.pdb
+E:\Codelib\Git\CommonClass\CommonClass\obj\Debug\CommonClass.dll
+E:\Codelib\Git\CommonClass\CommonClass\obj\Debug\CommonClass.pdb
