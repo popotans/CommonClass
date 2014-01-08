@@ -3,99 +3,88 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using CommonClass.Contract;
-
+using System.Data;
+using System.Data.Common;
 namespace CommonClass.Domain
 {
-    public abstract class BaseClass : IClass
+    public class AccessClass : IClassDao
     {
-        public List<int> Navgination
+        public AccessClass()
         {
-            get;
-            set;
+
         }
 
-        public List<int> Childs
+        public AccessClass(IDB db)
         {
-            get;
-            set;
+            this.db = db;
+        }
+        public int IDx { get; set; }
+        public int P1 { get; set; }
+        public int P2 { get; set; }
+        public string Title { get; set; }
+
+        public IDB db { get; set; }
+
+        public virtual int Insert()
+        {
+            return (int)db.Insert("");
+        }
+        public virtual int Update()
+        {
+            return db.Update("");
         }
 
-        public int IDX
+        private ClassInfo Convert(IDataReader dr)
         {
-            get;
-            set;
+            ClassInfo bc = new ClassInfo();
+            return bc;
         }
 
-        public string Title
+        public ClassInfo GetInfo(int idx)
         {
-            get;
-            set;
+            ClassInfo bc = null;
+            string sql = "select * from cls where idx=" + idx;
+            IDataReader dr = db.GetReader(sql);
+            if (dr.Read())
+            {
+                bc = Convert(dr);
+            }
+            dr.Close();
+            return bc;
         }
+        /*
+         * 0  0  1
+         * 0   0   2
+         * 0   0   3
+         * 1 0     4
+         * 1  0     5
+         * 2   0    6
+         * 1   4    7
+         *   
+         * 
+         * 
+         * 
+         * **/
 
-        public string Entitle
+        public virtual List<ClassInfo> GetRoot()
         {
-            get;
-            set;
+            string sql = "select * from cls where p1=0 and p2=0";
+            return null;
         }
-
-        public ISite Site
+        public virtual List<ClassInfo> GetByP1(int p1)
         {
-            get;
-            set;
+            string sql = "select * from cls where p1=" + p1 + " and p2=0";
+            return null;
         }
-
-        public IChannel Channel
+        public virtual List<ClassInfo> GetByP1All(int p1)
         {
-            get;
-            set;
+            string sql = "select * from cls where p1=0";
+            return null;
         }
-
-        public int SiteId
+        public virtual List<ClassInfo> GetByP2(int p2)
         {
-            get;
-            set;
-        }
-
-        public int ChannelId
-        {
-            get;
-            set;
-        }
-
-        public int Enable
-        {
-            get;
-            set;
-        }
-
-        public DateTime UpdateTime
-        {
-            get;
-            set;
-        }
-
-        public int OrderIndex
-        {
-            get;
-            set;
-        }
-
-
-        public abstract List<IClass> GetAll(int siteid)
-       ;
-
-        public abstract List<IClass> GetAll(int siteid, int channelid)
-        ;
-
-        public abstract IClass GetByIdx(int classidx)
-        ;
-
-        public abstract IClass GetById(int classid, int depth)
-        ;
-
-        public object Clone()
-        {
-            return this.MemberwiseClone();
+            string sql = "select * from cls where p2=" + p2 + " and p1!=0 ";
+            return null;
         }
     }
 }

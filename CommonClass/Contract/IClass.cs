@@ -19,27 +19,22 @@ namespace CommonClass.Contract
         ISite Site { get; set; }
     }
 
-    public interface IClass : ICloneable
+    public interface IClassDao
     {
-        int IDX { get; set; }
+        int IDx { get; set; }
+        int P1 { get; set; }
+        int P2 { get; set; }
         string Title { get; set; }
-        string Entitle { get; set; }
-        ISite Site { get; set; }
-        IChannel Channel { get; set; }
-        int SiteId { get; set; }
-        int ChannelId { get; set; }
-        int Enable { get; set; }
-        DateTime UpdateTime { get; set; }
-        int OrderIndex { get; set; }
+        IDB db { get; set; }
 
 
+        ClassInfo GetInfo(int idx);
+        List<ClassInfo> GetRoot();
+        List<ClassInfo> GetByP1(int p1);
+        List<ClassInfo> GetByP1All(int p1);
+        List<ClassInfo> GetByP2(int p2);
 
-        List<IClass> GetAll(int siteid);
-        List<IClass> GetAll(int siteid, int channelid);
-        IClass GetByIdx(int classidx);
-        IClass GetById(int classid, int depth);
-        List<int> Navgination { get; set; }
-        List<int> Childs { get; set; }
+
     }
 
     /*********

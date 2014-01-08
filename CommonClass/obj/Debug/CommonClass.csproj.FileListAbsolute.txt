@@ -1,5 +1,0 @@
-E:\CodeLib\Git\CommonClass\CommonClass\obj\Debug\ResolveAssemblyReference.cache
-E:\CodeLib\Git\CommonClass\CommonClass\bin\CommonClass.dll
-E:\CodeLib\Git\CommonClass\CommonClass\bin\CommonClass.pdb
-E:\CodeLib\Git\CommonClass\CommonClass\obj\Debug\CommonClass.dll
-E:\CodeLib\Git\CommonClass\CommonClass\obj\Debug\CommonClass.pdb

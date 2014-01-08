@@ -49,6 +49,7 @@
   <ItemGroup>
     <Content Include="API\Scripts\jquery-1.4.1.min.js" />
     <Content Include="API\WebForm1.aspx" />
+    <Content Include="App_Data\class.mdb" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -67,14 +68,15 @@
     <Compile Include="API\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Contract\AccessDB.cs" />
     <Compile Include="Contract\IClass.cs" />
+    <Compile Include="Contract\IDB.cs" />
     <Compile Include="Domain\BaseClass.cs" />
+    <Compile Include="Domain\ClassInfo.cs" />
     <Compile Include="Domain\DefaultClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="API\Web.config">
       <SubType>Designer</SubType>
