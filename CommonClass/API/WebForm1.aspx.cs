@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CommonClass.Contract;
-using CommonClass.Domain;
 
 namespace CommonClass.API
 {
@@ -23,12 +22,12 @@ namespace CommonClass.API
 
 
 
-            IClassDao cls = new AccessClass(new AccessDB(""));
-            List<ClassInfo> list = cls.GetByP1(0);
-            foreach (ClassInfo ic in list)
-            {
+            //IClassDao cls = new AccessClass(new AccessDB(""));
+            //List<ClassInfo> list = cls.GetByP1(0);
+            //foreach (ClassInfo ic in list)
+            //{
 
-            }
+            //}
 
         }
     }

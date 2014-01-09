@@ -11,5 +11,14 @@ namespace CommonClass
         public int P1 { get; set; }
         public int P2 { get; set; }
         public string Title { get; set; }
+        public int Disable { get; set; }
+        public int OrderIdx { get; set; }
+        public int SiteID { get; set; }
+
+
     }
+    
+
+
+
 }
