@@ -36,6 +36,10 @@
     <Reference Include="Helper">
       <HintPath>..\..\helper\Helper\bin\Debug\Helper.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data, Version=5.0.8.1, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
@@ -74,9 +78,13 @@
     <Compile Include="API\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Code\DaoUtil.cs" />
     <Compile Include="Code\DbType.cs" />
+    <Compile Include="Code\IBaseClass.cs" />
     <Compile Include="Code\IClass.cs" />
     <Compile Include="Code\BaseClassDao.cs" />
+    <Compile Include="Code\MySqlClass.cs" />
+    <Compile Include="Code\MySqlDB.cs" />
     <Compile Include="Domain\ClassInfo.cs" />
     <Compile Include="Code\IDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
