@@ -7,6 +7,6 @@ E:\Codelib\Git\CommonClass\CommonClass\bin\Newtonsoft.Json.dll
 E:\Codelib\Git\CommonClass\CommonClass\bin\Helper.pdb
 E:\Codelib\Git\CommonClass\CommonClass\bin\NVelocity.xml
 E:\Codelib\Git\CommonClass\CommonClass\bin\Newtonsoft.Json.xml
-E:\Codelib\Git\CommonClass\CommonClass\obj\Debug\CommonClass.csprojResolveAssemblyReference.cache
 E:\Codelib\Git\CommonClass\CommonClass\obj\Debug\CommonClass.dll
 E:\Codelib\Git\CommonClass\CommonClass\obj\Debug\CommonClass.pdb
+E:\CodeLib\Git\CommonClass\CommonClass\obj\Debug\ResolveAssemblyReference.cache

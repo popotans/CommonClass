@@ -23,10 +23,11 @@ Url varchar(1000)
  
 
 **/
-namespace CommonClass.Code
+namespace CommonClass
 {
     public class MySqlClass : CommonClass.IBaseClass
     {
+        public MySqlClass(string str) { this.db = new MySqlDB(str); }
         public IDb db
         {
             get;
@@ -118,6 +119,7 @@ namespace CommonClass.Code
 
         public int Insert(ClassInfo ci)
         {
+            if (ci.Url == null) ci.Url = string.Empty;
             string s = "select max(`idx`) from cls";
             int id = db.ExecScalarInt(s);
             if (id > 0) ci.IDx = id + 1; else ci.IDx = 1;

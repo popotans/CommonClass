@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data;
 using MySql.Data.MySqlClient;
-namespace CommonClass.Code
+namespace CommonClass
 {
     public class MySqlDB : IDb
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 namespace CommonClass
 {
-    interface IBaseClass
+    public interface IBaseClass
     {
-        CommonClass.IDb db { get;  set; }
+        CommonClass.IDb db { get; set; }
         CommonClass.ClassInfo Get(int idx);
         System.Collections.Generic.List<CommonClass.ClassInfo> GetByIds(int[] idsArr);
         System.Collections.Generic.List<CommonClass.ClassInfo> GetByP1(int p1);

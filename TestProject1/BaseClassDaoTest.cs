@@ -134,5 +134,26 @@ namespace TestProject1
 
 
         }
+
+
+        [TestMethod()]
+        // [HostType("ASP.NET")]
+        [AspNetDevelopmentServerHost("E:\\Codelib\\Git\\CommonClass\\CommonClass", "/")]
+        public void TestMysqlInsert()
+        {
+            string connstr = "server=localhost;User Id=root;password=niejunhua;Database=nq";
+            IBaseClass db = new MySqlClass(connstr);
+            db.InsertRoot(new ClassInfo
+            {
+                P1 = 0,
+                P2 = 0,
+                Title = "教育学习",
+                OrderIdx = 1,
+                SiteID = 0,
+            });
+
+
+
+        }
     }
 }

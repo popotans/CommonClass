@@ -59,6 +59,7 @@
     <Content Include="API\WebForm1.aspx" />
     <Content Include="App_Data\class.mdb" />
     <Content Include="API\Test.aspx" />
+    <Content Include="Code\nq_mysql.sql" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
