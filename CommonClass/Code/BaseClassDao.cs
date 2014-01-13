@@ -14,7 +14,7 @@ namespace CommonClass
     /// <para>target.Insert(new ClassInfo());</para>
     ///
     /// </summary>
-    public class BaseClass : IClassDao
+    public class BaseClass : IClassDao, CommonClass.IBaseClass
     {
         //public BaseClassDao(IDb db)
         //{
@@ -39,7 +39,7 @@ namespace CommonClass
             int id = db.ExecScalarInt(s);
             if (id > 0) ci.IDx = id + 1; else ci.IDx = 1;
 
-            string sql = "insert into cls (idx,TITLE,P1,P2,disable,orderidx,siteid)VALUES(@idx,@title,@p1,@p2,@disable,@orderidx,@siteid)";
+            string sql = "insert into cls (idx,TITLE,P1,P2,disable,orderidx,siteid,url)VALUES(@idx,@title,@p1,@p2,@disable,@orderidx,@siteid,@url)";
             List<string> names = new List<string>();
             names.Add("@idx");
             names.Add("@title");
@@ -48,6 +48,7 @@ namespace CommonClass
             names.Add("@disable");
             names.Add("@orderidx");
             names.Add("@siteid");
+            names.Add("@url");
             List<object> vals = new List<object>();
             vals.Add(ci.IDx);
             vals.Add(ci.Title);
@@ -56,6 +57,7 @@ namespace CommonClass
             vals.Add(ci.Disable);
             vals.Add(ci.OrderIdx);
             vals.Add(ci.SiteID);
+            vals.Add(ci.Url);
             List<DbType> ts = new List<DbType>();
             ts.Add(DbType.Int32);
             ts.Add(DbType.String);
@@ -64,6 +66,7 @@ namespace CommonClass
             ts.Add(DbType.Int32);
             ts.Add(DbType.Int32);
             ts.Add(DbType.Int32);
+            ts.Add(DbType.String);
             Object obj = db.ExecNonQuery(sql, db.GetParams(names, vals, ts));
             return ci.IDx;
         }
@@ -105,7 +108,7 @@ namespace CommonClass
 
         public virtual int Update(ClassInfo ci)
         {
-            string sql = "update cls set title=@title,p1=@p1,p2=@p2,disable=@disable,orderidx=@orderidx,siteid=@siteid  where idx=" + ci.IDx;
+            string sql = "update cls set title=@title,p1=@p1,p2=@p2,disable=@disable,orderidx=@orderidx,siteid=@siteid,url=@url  where idx=" + ci.IDx;
             List<string> names = new List<string>();
             names.Add("@title");
             names.Add("@p1");
@@ -113,6 +116,7 @@ namespace CommonClass
             names.Add("@disable");
             names.Add("@orderidx");
             names.Add("@siteid");
+            names.Add("@url");
             List<object> vals = new List<object>();
             vals.Add(ci.Title);
             vals.Add(ci.P1);
@@ -120,6 +124,7 @@ namespace CommonClass
             vals.Add(ci.Disable);
             vals.Add(ci.OrderIdx);
             vals.Add(ci.SiteID);
+            vals.Add(ci.Url);
             List<DbType> ts = new List<DbType>();
             ts.Add(DbType.String);
             ts.Add(DbType.Int32);
@@ -127,18 +132,14 @@ namespace CommonClass
             ts.Add(DbType.Int32);
             ts.Add(DbType.Int32);
             ts.Add(DbType.Int32);
+            ts.Add(DbType.String);
             int obj = db.ExecNonQuery(sql, db.GetParams(names, vals, ts));
             return obj;
         }
 
         private ClassInfo Convert(IDataReader dr)
         {
-            ClassInfo bc = new ClassInfo();
-            bc.IDx = int.Parse(dr["idx"].ToString());
-            bc.P1 = int.Parse(dr["P1"].ToString());
-            bc.P2 = int.Parse(dr["P2"].ToString());
-            bc.Title = dr["TITLE"].ToString();
-            return bc;
+            return DaoUtil.Instance.Convert(dr);
         }
 
         /*

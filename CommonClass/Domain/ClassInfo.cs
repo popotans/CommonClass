@@ -14,6 +14,7 @@ namespace CommonClass
         public int Disable { get; set; }
         public int OrderIdx { get; set; }
         public int SiteID { get; set; }
+        public string Url { get; set; }
 
 
     }

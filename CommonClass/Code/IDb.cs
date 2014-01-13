@@ -14,9 +14,12 @@ namespace CommonClass
         object ExecScalar(string sql, params IDataParameter[] p);
         int ExecScalarInt(string sql, params IDataParameter[] p);
         string ConnStr { get; set; }
-        IDbConnection GetConn1();
+
         IDbDataParameter GetParam(string name, object val, DbType t);
         IDbDataParameter[] GetParams(List<string> names, List<object> vals, List<DbType> t);
+
+        IDbDataParameter GetParam(string name, object val, MySql.Data.MySqlClient.MySqlDbType t);
+        IDbDataParameter[] GetParams(List<string> names, List<object> vals, List<MySql.Data.MySqlClient.MySqlDbType> t);
 
     }
 }

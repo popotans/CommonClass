@@ -53,10 +53,7 @@ namespace CommonClass
         }
 
 
-        public IDbConnection GetConn1()
-        {
-            return new OleDbConnection(this.ConnStr);
-        }
+      
 
         public OleDbConnection GetConn()
         {
@@ -105,6 +102,17 @@ namespace CommonClass
             object obj = ExecScalar(sql, p);
             if (obj == null) return -1;
             return int.Parse(obj.ToString());
+        }
+
+
+        public IDbDataParameter GetParam(string name, object val, MySql.Data.MySqlClient.MySqlDbType t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDbDataParameter[] GetParams(List<string> names, List<object> vals, List<MySql.Data.MySqlClient.MySqlDbType> t)
+        {
+            throw new NotImplementedException();
         }
     }
 }
