@@ -207,5 +207,42 @@ namespace CommonClass
             int obj = db.ExecNonQuery(sql, db.GetParams(names, vals, ts));
             return obj;
         }
+
+        /// <summary>
+        /// 初始化分类表数据库，请谨慎操作，将删除所有数据
+        /// </summary>
+        public void InitDatabase()
+        {
+            //db
+            db.ExecNonQuery("drop database if exists `nq`");
+            db.ExecNonQuery("CREATE DATABASE IF NOT EXISTS `nq`  DEFAULT CHARACTER SET utf8 ;");
+            //色条encoding
+//            db.ExecNonQuery(@"set character_set_client=utf8;
+//set character_set_connection=utf8;
+//
+//set character_set_database=utf8;
+//
+//set character_set_results=utf8;
+//
+//set character_set_server=utf8;");
+
+
+
+
+            //tb
+            db.ExecNonQuery("USE `nq`;");
+            db.ExecNonQuery("DROP TABLE IF EXISTS `cls`;");
+            db.ExecNonQuery(@"CREATE TABLE `cls` (
+  `idx` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `p1` int(11) NOT NULL,
+  `p2` int(11) NOT NULL,
+  `disable` int(11) NOT NULL,
+  `orderidx` int(11) NOT NULL,
+  `SiteID` int(11) NOT NULL,
+  `Url` varchar(1000) default NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
+        }
+
     }
 }

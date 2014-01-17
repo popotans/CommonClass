@@ -137,23 +137,41 @@ namespace TestProject1
 
 
         [TestMethod()]
+        public void TestDb()
+        {
+            string connstr = "server=localhost;User Id=root;password=njhandyj;charset=utf8";//Database=nq
+            MySqlClass msc = new MySqlClass(connstr);
+            msc.InitDatabase();
+        }
+
+
+        [TestMethod()]
         // [HostType("ASP.NET")]
         [AspNetDevelopmentServerHost("E:\\Codelib\\Git\\CommonClass\\CommonClass", "/")]
         public void TestMysqlInsert()
         {
-            string connstr = "server=localhost;User Id=root;password=niejunhua;Database=nq";
+            string connstr = "server=localhost;User Id=root;password=njhandyj;Database=nq;charset=utf8";//Database=nq
+
             IBaseClass db = new MySqlClass(connstr);
             db.InsertRoot(new ClassInfo
             {
                 P1 = 0,
                 P2 = 0,
-                Title = "教育学习",
+                Title = "生活家居",
                 OrderIdx = 1,
                 SiteID = 0,
             });
-
-
-
         }
+
+        string str = "server=localhost;User Id=root;password=njhandyj;Database=nq";//Database=nq
+        [TestMethod]
+        public void TestList()
+        {
+            IBaseClass db = new MySqlClass(str);
+            ClassInfo ci = db.Get(1);
+            Console.WriteLine(ci.IDx + "  " + ci.Title);
+        }
+
+
     }
 }
