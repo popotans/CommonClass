@@ -5,6 +5,7 @@ using System.Web;
 using System.Data;
 using System.Text;
 using MySql.Data.MySqlClient;
+using System.Web.UI.WebControls;
 
 /*
 
@@ -117,6 +118,19 @@ namespace CommonClass
             return list;
         }
 
+        public List<ClassInfo> GetAll(int siteid)
+        {
+            List<ClassInfo> list = new List<ClassInfo>();
+            string sql = "select * from `cls` where (`disable` != 1 or `disable` is null) and `siteid`=" + siteid;
+            IDataReader dr = db.GetReader(sql);
+            while (dr.Read())
+            {
+                list.Add(DaoUtil.Instance.Convert(dr));
+            }
+            dr.Close();
+            return list;
+        }
+
         public int Insert(ClassInfo ci)
         {
             if (ci.Url == null) ci.Url = string.Empty;
@@ -214,17 +228,17 @@ namespace CommonClass
         public void InitDatabase()
         {
             //db
-            db.ExecNonQuery("drop database if exists `nq`");
+            //  db.ExecNonQuery("drop database if exists `nq`");
             db.ExecNonQuery("CREATE DATABASE IF NOT EXISTS `nq`  DEFAULT CHARACTER SET utf8 ;");
             //色条encoding
-//            db.ExecNonQuery(@"set character_set_client=utf8;
-//set character_set_connection=utf8;
-//
-//set character_set_database=utf8;
-//
-//set character_set_results=utf8;
-//
-//set character_set_server=utf8;");
+            //            db.ExecNonQuery(@"set character_set_client=utf8;
+            //set character_set_connection=utf8;
+            //
+            //set character_set_database=utf8;
+            //
+            //set character_set_results=utf8;
+            //
+            //set character_set_server=utf8;");
 
 
 
@@ -244,5 +258,78 @@ namespace CommonClass
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
         }
 
+
+
+
+        public List<ClassInfo> GetRoot(List<ClassInfo> all)
+        {
+            List<ClassInfo> lcin = new List<ClassInfo>();
+            foreach (ClassInfo ci in all)
+            {
+                if (ci.P1 == ci.P2 && ci.P1 == 0)
+                    lcin.Add(ci);
+            }
+            return lcin;
+        }
+
+        public List<ClassInfo> GetByP2(List<ClassInfo> all, int p2)
+        {
+            List<ClassInfo> lcin = new List<ClassInfo>();
+            foreach (ClassInfo ci in all)
+            {
+                if (p2 == ci.P2 && ci.P1 != 0)
+                    lcin.Add(ci);
+            }
+            return lcin;
+        }
+
+        public List<ClassInfo> GetByP1All(List<ClassInfo> all, int p1)
+        {
+            List<ClassInfo> lcin = new List<ClassInfo>();
+            foreach (ClassInfo ci in all)
+            {
+                if (p1 == ci.P1)
+                    lcin.Add(ci);
+            }
+            return lcin;
+        }
+
+        public List<ClassInfo> GetByP1(List<ClassInfo> all, int p1)
+        {
+            List<ClassInfo> lcin = new List<ClassInfo>();
+            foreach (ClassInfo ci in all)
+            {
+                if (p1 == ci.P1 && ci.P2 == 0)
+                    lcin.Add(ci);
+            }
+            return lcin;
+        }
+
+
+        public void InitDropDownList(int siteid, System.Web.UI.WebControls.DropDownList ddl)
+        {
+            List<ClassInfo> source = new List<ClassInfo>();
+            List<ClassInfo> all = GetAll(siteid);
+            foreach (ClassInfo ci in GetRoot(all))
+            {
+                //  ci.Title = "<span style='color:red;'>" + ci.Title + "</span>";
+                //source.Add(ci);
+                ListItem li = new ListItem(ci.Title, ci.IDx.ToString());
+                li.Attributes["class"] = "lev1";
+                ddl.Items.Add(li);
+                foreach (ClassInfo ci1 in GetByP1(all, ci.IDx))
+                {
+                    ListItem li2 = new ListItem(ci1.Title, ci1.IDx.ToString());
+                    li2.Attributes["class"] = "lev2";
+                    ddl.Items.Add(li2);
+                    //source.Add(ci1);
+                }
+            }
+            //ddl.DataTextField = "title";
+            //ddl.DataValueField = "idx";
+            //ddl.DataSource = source;
+            //ddl.DataBind();
+
+        }
     }
 }

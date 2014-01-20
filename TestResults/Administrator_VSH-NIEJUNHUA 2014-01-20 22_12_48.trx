@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="1621103d-3812-4189-9b53-93578cf9be1f" name="Administrator@VSH-NIEJUNHUA 2014-01-20 22:12:48" runUser="VSH-NIEJUNHUA\Administrator" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="本地" id="70fa9d93-44e1-4fae-8a0b-307f6e928580">
+    <Description>这些设置为本地测试运行的默认测试设置。</Description>
+    <Deployment enabled="false" runDeploymentRoot="Administrator_VSH-NIEJUNHUA 2014-01-20 22_12_48">
+      <DeploymentItem filename="E:\CodeLib\Git\CommonClass\CommonClass\bin\CommonClass.dll" />
+      <DeploymentItem filename="E:\CodeLib\Git\helper\Helper\bin\Debug\Helper.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-01-20T22:12:48.4707681+08:00" queuing="2014-01-20T22:12:50.7779001+08:00" start="2014-01-20T22:12:50.9519100+08:00" finish="2014-01-20T22:12:51.7099534+08:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestList" storage="e:\codelib\git\commonclass\testproject1\bin\release\testproject1.dll" id="c4e57d40-8255-d1d5-d001-e2bf4673fc7d">
+      <Execution id="a8120192-48c5-4bfd-ab30-91b874423f17" />
+      <TestMethod codeBase="E:/CodeLib/Git/CommonClass/TestProject1/bin/Release/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.BaseClassDaoTest, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestList" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="列表中未列出的结果" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="所有已加载的结果" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="c4e57d40-8255-d1d5-d001-e2bf4673fc7d" executionId="a8120192-48c5-4bfd-ab30-91b874423f17" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="a8120192-48c5-4bfd-ab30-91b874423f17" testId="c4e57d40-8255-d1d5-d001-e2bf4673fc7d" testName="TestList" computerName="VSH-NIEJUNHUA" duration="00:00:00.2733418" startTime="2014-01-20T22:12:50.9699111+08:00" endTime="2014-01-20T22:12:51.6599505+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a8120192-48c5-4bfd-ab30-91b874423f17">
+      <Output>
+        <ErrorInfo>
+          <Message>测试方法 TestProject1.BaseClassDaoTest.TestList 引发了异常: 
+MySql.Data.MySqlClient.MySqlException: Access denied for user 'root'@'localhost' (using password: YES)</Message>
+          <StackTrace>    在 MySql.Data.MySqlClient.MySqlStream.OpenPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.Authenticate411()
+   在 MySql.Data.MySqlClient.NativeDriver.Authenticate()
+   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 CommonClass.MySqlDB.GetReader(String sql, IDataParameter[] p) 位置 E:\CodeLib\Git\CommonClass\CommonClass\Code\MySqlDB.cs:行号 28
+   在 CommonClass.MySqlClass.Get(Int32 idx) 位置 E:\CodeLib\Git\CommonClass\CommonClass\Code\MySqlClass.cs:行号 40
+   在 TestProject1.BaseClassDaoTest.TestList() 位置 E:\CodeLib\Git\CommonClass\TestProject1\BaseClassDaoTest.cs:行号 171
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

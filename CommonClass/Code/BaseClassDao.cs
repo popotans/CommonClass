@@ -14,7 +14,7 @@ namespace CommonClass
     /// <para>target.Insert(new ClassInfo());</para>
     ///
     /// </summary>
-    public class BaseClass : IClassDao, CommonClass.IBaseClass
+    public class BaseClass : IClassDao, IBaseClass
     {
         //public BaseClassDao(IDb db)
         //{
@@ -222,5 +222,38 @@ namespace CommonClass
             return list;
         }
 
+
+
+        public List<ClassInfo> GetAll(int siteid)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public List<ClassInfo> GetRoot(List<ClassInfo> all)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ClassInfo> GetByP2(List<ClassInfo> all, int p2)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ClassInfo> GetByP1All(List<ClassInfo> all, int p1)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ClassInfo> GetByP1(List<ClassInfo> all, int p1)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void InitDropDownList(int siteid, System.Web.UI.WebControls.DropDownList ddl)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

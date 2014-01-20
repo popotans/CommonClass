@@ -1,0 +1,14 @@
+E:\CodeLib\Git\CommonClass\TestProject1\bin\Release\TestProject1.dll
+E:\CodeLib\Git\CommonClass\TestProject1\bin\Release\TestProject1.pdb
+E:\CodeLib\Git\CommonClass\TestProject1\bin\Release\CommonClass.dll
+E:\CodeLib\Git\CommonClass\TestProject1\bin\Release\Helper.dll
+E:\CodeLib\Git\CommonClass\TestProject1\bin\Release\MySql.Data.dll
+E:\CodeLib\Git\CommonClass\TestProject1\bin\Release\NVelocity.dll
+E:\CodeLib\Git\CommonClass\TestProject1\bin\Release\Newtonsoft.Json.dll
+E:\CodeLib\Git\CommonClass\TestProject1\bin\Release\CommonClass.pdb
+E:\CodeLib\Git\CommonClass\TestProject1\bin\Release\Helper.pdb
+E:\CodeLib\Git\CommonClass\TestProject1\bin\Release\NVelocity.xml
+E:\CodeLib\Git\CommonClass\TestProject1\bin\Release\Newtonsoft.Json.xml
+E:\CodeLib\Git\CommonClass\TestProject1\obj\Release\ResolveAssemblyReference.cache
+E:\CodeLib\Git\CommonClass\TestProject1\obj\Release\TestProject1.dll
+E:\CodeLib\Git\CommonClass\TestProject1\obj\Release\TestProject1.pdb
