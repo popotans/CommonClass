@@ -250,8 +250,7 @@ namespace CommonClass
             throw new NotImplementedException();
         }
 
-
-        public void InitDropDownList(int siteid, System.Web.UI.WebControls.DropDownList ddl)
+        public List<ClassInfo> InitDropDownList(int siteid)
         {
             throw new NotImplementedException();
         }

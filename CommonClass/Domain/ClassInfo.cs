@@ -16,6 +16,8 @@ namespace CommonClass
         public int SiteID { get; set; }
         public string Url { get; set; }
 
+        public int Depth { get; set; }
+
 
     }
     

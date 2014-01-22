@@ -306,29 +306,27 @@ namespace CommonClass
         }
 
 
-        public void InitDropDownList(int siteid, System.Web.UI.WebControls.DropDownList ddl)
+        public List<ClassInfo> InitDropDownList(int siteid)
         {
             List<ClassInfo> source = new List<ClassInfo>();
+
             List<ClassInfo> all = GetAll(siteid);
             foreach (ClassInfo ci in GetRoot(all))
             {
-                //  ci.Title = "<span style='color:red;'>" + ci.Title + "</span>";
-                //source.Add(ci);
-                ListItem li = new ListItem(ci.Title, ci.IDx.ToString());
-                li.Attributes["class"] = "lev1";
-                ddl.Items.Add(li);
+                ci.Depth = 1;
+                source.Add(ci);
                 foreach (ClassInfo ci1 in GetByP1(all, ci.IDx))
                 {
-                    ListItem li2 = new ListItem(ci1.Title, ci1.IDx.ToString());
-                    li2.Attributes["class"] = "lev2";
-                    ddl.Items.Add(li2);
-                    //source.Add(ci1);
+                    ci1.Depth = 2;
+                    source.Add(ci1);
                 }
             }
             //ddl.DataTextField = "title";
             //ddl.DataValueField = "idx";
             //ddl.DataSource = source;
             //ddl.DataBind();
+            return source
+                ;
 
         }
     }

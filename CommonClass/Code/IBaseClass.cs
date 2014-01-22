@@ -27,6 +27,6 @@ namespace CommonClass
         int Update(CommonClass.ClassInfo ci);
 
 
-        void InitDropDownList(int siteid, System.Web.UI.WebControls.DropDownList ddl);
+        List<ClassInfo> InitDropDownList(int siteid);
     }
 }
