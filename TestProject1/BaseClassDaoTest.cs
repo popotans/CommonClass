@@ -139,7 +139,7 @@ namespace TestProject1
         [TestMethod()]
         public void TestDb()
         {
-            string connstr = "server=localhost;User Id=root;password=njhandyj;charset=utf8";//Database=nq
+            string connstr = "server=localhost;User Id=root;password=niejunhua;charset=utf8";//Database=nq
             MySqlClass msc = new MySqlClass(connstr);
             msc.InitDatabase();
         }
@@ -153,11 +153,11 @@ namespace TestProject1
             string connstr = "server=localhost;User Id=root;password=niejunhua;Database=nq;charset=utf8";//Database=nq
 
             IBaseClass db = new MySqlClass(connstr);
-            db.Insert(new ClassInfo
+            db.InsertP1P2(new ClassInfo
             {
-                P1 = 2,
-                P2 = 0,
-                Title = "商业财经",
+                P1 = 5,
+                P2 = 1,
+                Title = "国内历史",
                 OrderIdx = 1,
                 SiteID = 0,
             });
@@ -168,9 +168,9 @@ namespace TestProject1
         public void TestList()
         {
             IBaseClass db = new MySqlClass(str);
-           var ci = db.GetByP1(1);
-          //  Console.WriteLine(ci[0].IDx + "  " + ci[0].Title);
-           Console.WriteLine(ci.Count);
+            var ci = db.GetByP1(1);
+            //  Console.WriteLine(ci[0].IDx + "  " + ci[0].Title);
+            Console.WriteLine(ci.Count);
         }
 
 

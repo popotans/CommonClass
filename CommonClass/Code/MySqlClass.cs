@@ -69,7 +69,7 @@ namespace CommonClass
         public List<ClassInfo> GetByP1(int p1)
         {
             List<ClassInfo> list = new List<ClassInfo>();
-            string sql = "select * from `cls` where  (`disable` != 1 or `disable` is null)  and `p1`=" + p1 + " and `p2`=0";
+            string sql = "select * from `cls` where  (`disable` != 1 or `disable` is null)  and `p1`=" + p1;
             IDataReader dr = db.GetReader(sql);
             while (dr.Read())
             {
@@ -82,7 +82,7 @@ namespace CommonClass
         public List<ClassInfo> GetByP1All(int p1)
         {
             List<ClassInfo> list = new List<ClassInfo>();
-            string sql = "select * from `cls` where   (`disable` != 1 or `disable` is null)  and `p1`=" + p1;
+            string sql = "select * from `cls` where   (`disable` != 1 or `disable` is null)  and（ `p1`=" + p1 + " or `p2`=1)";
             IDataReader dr = db.GetReader(sql);
             while (dr.Read())
             {
@@ -108,7 +108,7 @@ namespace CommonClass
         public List<ClassInfo> GetRoot(int siteid)
         {
             List<ClassInfo> list = new List<ClassInfo>();
-            string sql = "select * from `cls` where (`disable` != 1 or `disable` is null) and `p1`=0 and `p2`=0 and `siteid`=" + siteid;
+            string sql = "select * from `cls` where (`disable` != 1 or `disable` is null) and `p1`=0 and `p2`=-1 and `siteid`=" + siteid;
             IDataReader dr = db.GetReader(sql);
             while (dr.Read())
             {
@@ -172,7 +172,7 @@ namespace CommonClass
 
         public int InsertP1(ClassInfo ci)
         {
-            ci.P2 = 0;
+            ci.P2 = -1;
             int id = Insert(ci);
             return id;
         }
@@ -186,7 +186,7 @@ namespace CommonClass
         public int InsertRoot(ClassInfo ci)
         {
             ci.P1 = 0;
-            ci.P2 = 0;
+            ci.P2 = -1;
             int id = Insert(ci);
             return id;
         }
@@ -266,7 +266,7 @@ namespace CommonClass
             List<ClassInfo> lcin = new List<ClassInfo>();
             foreach (ClassInfo ci in all)
             {
-                if (ci.P1 == ci.P2 && ci.P1 == 0)
+                if (-1 == ci.P2 && ci.P1 == 0)
                     lcin.Add(ci);
             }
             return lcin;
@@ -277,7 +277,7 @@ namespace CommonClass
             List<ClassInfo> lcin = new List<ClassInfo>();
             foreach (ClassInfo ci in all)
             {
-                if (p2 == ci.P2 && ci.P1 != 0)
+                if (ci.P1 == p2)
                     lcin.Add(ci);
             }
             return lcin;
@@ -288,7 +288,7 @@ namespace CommonClass
             List<ClassInfo> lcin = new List<ClassInfo>();
             foreach (ClassInfo ci in all)
             {
-                if (p1 == ci.P1)
+                if (p1 == ci.P1 || ci.P2 == p1)
                     lcin.Add(ci);
             }
             return lcin;
@@ -299,7 +299,7 @@ namespace CommonClass
             List<ClassInfo> lcin = new List<ClassInfo>();
             foreach (ClassInfo ci in all)
             {
-                if (p1 == ci.P1 && ci.P2 == 0)
+                if (p1 == ci.P1 && ci.P2 == -1)
                     lcin.Add(ci);
             }
             return lcin;
