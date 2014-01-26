@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="0253411c-7c0c-4f7b-9af6-6a67979b19f9" name="niejunhua@SH-NIEJUNHUA 2014-01-26 17:45:38" runUser="SNDA\niejunhua" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="本地" id="70fa9d93-44e1-4fae-8a0b-307f6e928580">
+    <Description>这些设置为本地测试运行的默认测试设置。</Description>
+    <Deployment enabled="false" runDeploymentRoot="niejunhua_SH-NIEJUNHUA 2014-01-26 17_45_38">
+      <DeploymentItem filename="E:\Codelib\Git\helper\Helper\bin\Debug\Helper.dll" />
+      <DeploymentItem filename="E:\Codelib\Git\CommonClass\CommonClass\bin\CommonClass.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-01-26T17:45:38.6783875+08:00" queuing="2014-01-26T17:45:38.7213918+08:00" start="2014-01-26T17:45:38.7283925+08:00" finish="2014-01-26T17:45:39.4204617+08:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestDb" storage="e:\codelib\git\commonclass\testproject1\bin\debug\testproject1.dll" id="3a4420c1-0eeb-0ff7-1826-7bc9586f3d76">
+      <Execution id="bbd26285-50fc-4183-bad3-4aad45b05c9b" />
+      <TestMethod codeBase="E:/Codelib/Git/CommonClass/TestProject1/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.BaseClassDaoTest, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestDb" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="列表中未列出的结果" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="所有已加载的结果" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="3a4420c1-0eeb-0ff7-1826-7bc9586f3d76" executionId="bbd26285-50fc-4183-bad3-4aad45b05c9b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="bbd26285-50fc-4183-bad3-4aad45b05c9b" testId="3a4420c1-0eeb-0ff7-1826-7bc9586f3d76" testName="TestDb" computerName="SH-NIEJUNHUA" duration="00:00:00.4336545" startTime="2014-01-26T17:45:38.7443941+08:00" endTime="2014-01-26T17:45:39.3854582+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bbd26285-50fc-4183-bad3-4aad45b05c9b">
+      <Output>
+        <ErrorInfo>
+          <Message>测试方法 TestProject1.BaseClassDaoTest.TestDb 引发了异常: 
+MySql.Data.MySqlClient.MySqlException: Table 'article' already exists</Message>
+          <StackTrace>    在 MySql.Data.MySqlClient.MySqlStream.OpenPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.ReadResult(UInt64&amp; affectedRows, Int64&amp; lastInsertId)
+   在 MySql.Data.MySqlClient.MySqlDataReader.GetResultSet()
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 CommonClass.MySqlDB.ExecNonQuery(String sql, IDataParameter[] p) 位置 E:\Codelib\Git\CommonClass\CommonClass\Code\MySqlDB.cs:行号 46
+   在 CommonClass.MySqlClass.InitDatabase() 位置 E:\Codelib\Git\CommonClass\CommonClass\Code\MySqlClass.cs:行号 256
+   在 TestProject1.BaseClassDaoTest.TestDb() 位置 E:\Codelib\Git\CommonClass\TestProject1\BaseClassDaoTest.cs:行号 144
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

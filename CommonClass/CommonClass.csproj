@@ -40,6 +40,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\dll\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="NVelocity, Version=1.1.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\NVelocity.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
@@ -79,6 +83,7 @@
     <Compile Include="API\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Code\MySqlArticle.cs" />
     <Compile Include="Code\DaoUtil.cs" />
     <Compile Include="Code\DbType.cs" />
     <Compile Include="Code\IBaseClass.cs" />
@@ -86,8 +91,10 @@
     <Compile Include="Code\BaseClassDao.cs" />
     <Compile Include="Code\MySqlClass.cs" />
     <Compile Include="Code\MySqlDB.cs" />
+    <Compile Include="Domain\Article.cs" />
     <Compile Include="Domain\ClassInfo.cs" />
     <Compile Include="Code\IDb.cs" />
+    <Compile Include="Domain\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="API\Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>

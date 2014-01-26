@@ -121,20 +121,13 @@ namespace TestProject1
             //{
             //    Console.WriteLine(ci.Title + " " + ci.IDx);
             //}
-
-
-
-
             // update 
             //ClassInfo ci11 = target.Get(1);
             //Console.WriteLine(ci11.Title + " " + ci11.IDx);
             //ci11.Title = "关于我们";
             //target.Update(ci11);
             //Console.WriteLine("update suc");
-
-
         }
-
 
         [TestMethod()]
         public void TestDb()

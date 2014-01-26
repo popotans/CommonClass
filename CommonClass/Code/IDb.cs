@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data;
 using System.Data.OleDb;
+using MySql.Data.MySqlClient;
 namespace CommonClass
 {
     public interface IDb
@@ -20,6 +21,6 @@ namespace CommonClass
 
         IDbDataParameter GetParam(string name, object val, MySql.Data.MySqlClient.MySqlDbType t);
         IDbDataParameter[] GetParams(List<string> names, List<object> vals, List<MySql.Data.MySqlClient.MySqlDbType> t);
-
+        IDbDataParameter[] GetParams(Dictionary<string, MySqlDbType> dic, List<object> vals);
     }
 }

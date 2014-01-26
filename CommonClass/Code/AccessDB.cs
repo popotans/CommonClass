@@ -114,5 +114,11 @@ namespace CommonClass
         {
             throw new NotImplementedException();
         }
+
+
+        public IDbDataParameter[] GetParams(Dictionary<string, MySql.Data.MySqlClient.MySqlDbType> dic, List<object> vals)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

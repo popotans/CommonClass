@@ -101,5 +101,17 @@ namespace CommonClass
         {
             throw new NotImplementedException();
         }
+
+
+        public IDbDataParameter[] GetParams(Dictionary<string, MySqlDbType> dic, List<object> vals)
+        {
+            IDbDataParameter[] arr = new MySqlParameter[dic.Count];
+            int i = 0;
+            foreach (KeyValuePair<string, MySqlDbType> item in dic)
+            {
+                arr[i] = GetParam(item.Key, vals[i], item.Value);
+            }
+            return arr;
+        }
     }
 }

@@ -239,10 +239,6 @@ namespace CommonClass
             //set character_set_results=utf8;
             //
             //set character_set_server=utf8;");
-
-
-
-
             //tb
             db.ExecNonQuery("USE `nq`;");
             db.ExecNonQuery("DROP TABLE IF EXISTS `cls`;");
@@ -256,7 +252,29 @@ namespace CommonClass
   `SiteID` int(11) NOT NULL,
   `Url` varchar(1000) default NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
+
+            db.ExecNonQuery("DROP TABLE IF EXISTS `article`;");
+            db.ExecNonQuery(@"CREATE TABLE `nq`.`article` (
+  `idx` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(200) NOT NULL,
+  `content` TEXT NOT NULL,
+  `icon` VARCHAR(155),
+  `url` VARCHAR(105) NOT NULL,
+  `click` INTEGER UNSIGNED NOT NULL DEFAULT 0,
+  `authorid` INTEGER UNSIGNED DEFAULT 0,
+  `cid` INTEGER UNSIGNED NOT NULL,
+  `cp1` INTEGER NOT NULL DEFAULT -1,
+  `cp2` INTEGER NOT NULL DEFAULT -1,
+  `indate` DATETIME NOT NULL,
+  PRIMARY KEY (`idx`)
+)
+ENGINE = InnoDB
+CHARACTER SET utf8 COLLATE utf8_general_ci;
+");
+            db.ExecNonQuery("DROP TABLE IF EXISTS `user`;");
+            db.ExecNonQuery(@"CREATE TABLE `user` (  `idx` int(11) NOT NULL auto_increment,  `title` varchar(100) NOT NULL,  `pwd` varchar(100) NOT NULL,  `icon` varchar(155) default NULL,  `indate` datetime default '2000-01-01 00:00:00',  PRIMARY KEY  (`idx`)) ENGINE=InnoDB DEFAULT CHARSET=utf8");
         }
+
 
 
 
