@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data;
 using System.Data.OleDb;
+using System.Data.Common;
 namespace CommonClass
 {
     public class AccessDB : IDb
@@ -117,6 +118,34 @@ namespace CommonClass
 
 
         public IDbDataParameter[] GetParams(Dictionary<string, MySql.Data.MySqlClient.MySqlDbType> dic, List<object> vals)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public int ExecNonQuery(DbConnection conn, string sql, params IDataParameter[] p)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int ExecScalarInt(DbConnection conn, string sql, params IDataParameter[] p)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public object ExecScalar(DbConnection conn, string sql, params IDataParameter[] p)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        DbConnection IDb.GetConn()
+        {
+            throw new NotImplementedException();
+        }
+
+        public DbConnection GetConn(string connStr)
         {
             throw new NotImplementedException();
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data;
 using MySql.Data.MySqlClient;
+using System.Data.Common;
 namespace CommonClass
 {
     public class MySqlDB : IDb
@@ -13,14 +14,14 @@ namespace CommonClass
             this.ConnStr = connstr;
         }
 
-        MySqlConnection GetConn()
+        MySqlConnection GetConnection()
         {
             return new MySqlConnection(this.ConnStr);
         }
 
         public IDataReader GetReader(string sql, params IDataParameter[] p)
         {
-            MySqlConnection conn = GetConn();
+            MySqlConnection conn = GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql);
             if (p != null)
                 cmd.Parameters.AddRange(p);
@@ -37,7 +38,7 @@ namespace CommonClass
 
         public int ExecNonQuery(string sql, params IDataParameter[] p)
         {
-            MySqlConnection conn = GetConn();
+            MySqlConnection conn = GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql);
             if (p != null)
                 cmd.Parameters.AddRange(p);
@@ -50,7 +51,7 @@ namespace CommonClass
 
         public object ExecScalar(string sql, params IDataParameter[] p)
         {
-            MySqlConnection conn = GetConn();
+            MySqlConnection conn = GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql);
             cmd.Connection = conn;
             conn.Open();
@@ -91,7 +92,6 @@ namespace CommonClass
             return arr;
         }
 
-
         public IDbDataParameter GetParam(string name, object val, DbType t)
         {
             throw new NotImplementedException();
@@ -102,7 +102,6 @@ namespace CommonClass
             throw new NotImplementedException();
         }
 
-
         public IDbDataParameter[] GetParams(Dictionary<string, MySqlDbType> dic, List<object> vals)
         {
             IDbDataParameter[] arr = new MySqlParameter[dic.Count];
@@ -110,8 +109,55 @@ namespace CommonClass
             foreach (KeyValuePair<string, MySqlDbType> item in dic)
             {
                 arr[i] = GetParam(item.Key, vals[i], item.Value);
+                i++;
             }
             return arr;
+        }
+
+        public int ExecNonQuery(DbConnection conn, string sql, params IDataParameter[] p)
+        {
+            // MySqlConnection conn = GetConnection();
+            DbCommand cmd = new MySqlCommand(sql);
+            if (p != null)
+                cmd.Parameters.AddRange(p);
+            cmd.Connection = conn;
+            if (conn.State != ConnectionState.Open)
+                conn.Open();
+            int i = cmd.ExecuteNonQuery();
+            //  cmd.Connection.Close();
+            return i;
+        }
+
+        public int ExecScalarInt(DbConnection conn, string sql, params IDataParameter[] p)
+        {
+            object obj = ExecScalar(conn, sql, p);
+            if (obj == null) return -1;
+            return int.Parse(obj.ToString());
+        }
+
+
+        public object ExecScalar(DbConnection conn, string sql, params IDataParameter[] p)
+        {
+            //MySqlConnection conn = GetConnection();
+            DbCommand cmd = new MySqlCommand(sql);
+            cmd.Connection = conn;
+            if (conn.State != ConnectionState.Open)
+                conn.Open();
+            object obj = cmd.ExecuteScalar();
+            //cmd.Connection.Close();
+            if (obj != null && obj != DBNull.Value) return obj;
+            return null;
+        }
+
+
+        public DbConnection GetConn()
+        {
+            return GetConn(ConnStr);
+        }
+
+        public DbConnection GetConn(string connStr)
+        {
+            return new MySqlConnection(connStr);
         }
     }
 }

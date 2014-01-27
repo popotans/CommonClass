@@ -5,7 +5,7 @@ using System.Web;
 
 namespace CommonClass
 {
-    public class Article
+    public partial class Article
     {
         public int IDx { get; set; }
         public string Title { get; set; }
@@ -21,6 +21,9 @@ namespace CommonClass
         public int CP2 { get; set; }
 
         public DateTime InDate { get; set; }
+
+        public string Kwd { get; set; }
+        public string Desc { get; set; }
 
     }
 }

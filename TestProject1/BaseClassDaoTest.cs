@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
 using System.Collections.Generic;
+using Helper;
 
 namespace TestProject1
 {
@@ -150,7 +151,7 @@ namespace TestProject1
             {
                 P1 = 5,
                 P2 = 1,
-                Title = "国内历史",
+                Title = "澳门",
                 OrderIdx = 1,
                 SiteID = 0,
             });
@@ -164,6 +165,74 @@ namespace TestProject1
             var ci = db.GetByP1(1);
             //  Console.WriteLine(ci[0].IDx + "  " + ci[0].Title);
             Console.WriteLine(ci.Count);
+        }
+
+        [TestMethod]
+        public void InsertArticle()
+        {
+            MySqlArticle msa = new MySqlArticle(str);
+            int id = msa.Insert(new Article()
+            {
+                Desc = "desc",
+                Kwd = "kwd",
+                AuthorID = 0,
+                InDate = DateTime.Now,
+                CP2 = 1,
+                CP1 = 5,
+                CID = 8,
+                Click = 0,
+                Content = Guid.NewGuid().ToString() + "this is the article content ",
+                Icon = "",
+                Title = Guid.NewGuid().ToString(),
+                Url = ""
+            });
+            Console.WriteLine("idx is :" + id
+                );
+        }
+
+        [TestMethod]
+        public void TestartInfo()
+        {
+            MySqlArticle msa = new MySqlArticle(str);
+            Article art = msa.Get(17);
+            Console.WriteLine(art.Title);
+        }
+
+        [TestMethod]
+        public void TestartList()
+        {
+            MySqlArticle msa = new MySqlArticle(str);
+            List<Article> list = new List<Article>();
+            Article ap = new Article();
+            ap.CID = 1;
+            PageModel pm = msa.GetPageModelList(1, 2, ap);
+            list = pm.List as List<Article>;
+            foreach (Article art in list)
+            {
+                Console.WriteLine("idx:" + art.IDx + ", title=" + art.Title);
+            }
+            Console.WriteLine("TotalRecord:" + pm.TotalRecord);
+            Console.WriteLine("TotalPage:" + pm.TotalPage);
+            Console.WriteLine("CurrentPage:" + pm.Page);
+        }
+
+        [TestMethod]
+        public void TestUpdateArtInfo()
+        {
+            MySqlArticle msa = new MySqlArticle(str);
+            Article art = msa.Get(17);
+            Console.WriteLine(art.Title);
+            art.Title = "njhtitile update ";
+            msa.Update(art);
+            art = msa.Get(17);
+            Console.WriteLine(art.Title);
+        }
+
+        [TestMethod]
+        public void TestDeleteArtInfo()
+        {
+            MySqlArticle msa = new MySqlArticle(str);
+            msa.Delete(1);
         }
 
 
