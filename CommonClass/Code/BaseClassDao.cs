@@ -14,7 +14,7 @@ namespace CommonClass
     /// <para>target.Insert(new ClassInfo());</para>
     ///
     /// </summary>
-    public class BaseClass : IClassDao, IBaseClass
+    public class BaseClass : IBaseClass
     {
         //public BaseClassDao(IDb db)
         //{
@@ -251,6 +251,12 @@ namespace CommonClass
         }
 
         public List<ClassInfo> InitDropDownList(int siteid)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public List<ClassInfo> InitDropDownList(int siteid, bool has3)
         {
             throw new NotImplementedException();
         }

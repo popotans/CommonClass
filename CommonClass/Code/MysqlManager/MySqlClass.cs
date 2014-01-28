@@ -335,6 +335,11 @@ CREATE TABLE `user` (
 
         public List<ClassInfo> InitDropDownList(int siteid)
         {
+            return InitDropDownList(siteid, false);
+        }
+
+        public List<ClassInfo> InitDropDownList(int siteid, bool hasLevel3)
+        {
             List<ClassInfo> source = new List<ClassInfo>();
 
             List<ClassInfo> all = GetAll(siteid);
@@ -346,15 +351,15 @@ CREATE TABLE `user` (
                 {
                     ci1.Depth = 2;
                     source.Add(ci1);
+                    if (hasLevel3)
+                        foreach (ClassInfo ci3 in GetByP2(all, ci1.IDx))
+                        {
+                            ci3.Depth = 3;
+                            source.Add(ci3);
+                        }
                 }
             }
-            //ddl.DataTextField = "title";
-            //ddl.DataValueField = "idx";
-            //ddl.DataSource = source;
-            //ddl.DataBind();
-            return source
-                ;
-
+            return source;
         }
     }
 }

@@ -112,7 +112,7 @@ url=?url,click=?click,authorid=?authorid,cid=?cid,cp1=?cp1,cp2=?cp2,indate=?inda
             {
                 string wh = " ";
                 if (art.IDx != 0) wh += " and idx=" + art.IDx;
-                if (!string.IsNullOrEmpty(art.Title)) wh += " and title like '%" + art.Title + "%' ";
+                if (!string.IsNullOrEmpty(art.Kwd)) wh += " and( title like '%" + art.Kwd + "%' or kwd like '%" + art.Kwd + "%' or `desc` like '%" + art.Kwd + "%'  )";
                 if (art.CID != 0) wh += " and cid= " + art.CID;
                 if (art.CP1 != 0) wh += " and  cp1=" + art.CP1;
                 if (art.CP2 != 0) wh += " and  CP2=" + art.CP2;

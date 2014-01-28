@@ -28,5 +28,6 @@ namespace CommonClass
 
 
         List<ClassInfo> InitDropDownList(int siteid);
+        List<ClassInfo> InitDropDownList(int siteid, bool has3);
     }
 }
