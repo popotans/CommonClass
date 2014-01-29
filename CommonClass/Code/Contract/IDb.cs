@@ -24,13 +24,8 @@ namespace CommonClass
         DbConnection GetConn();
         DbConnection GetConn(string connStr);
 
-        IDbDataParameter GetParam(string name, object val, DbType t);
-        IDbDataParameter[] GetParams(List<string> names, List<object> vals, List<DbType> t);
-
-        IDbDataParameter GetParam(string name, object val, MySql.Data.MySqlClient.MySqlDbType t);
-        IDbDataParameter[] GetParams(List<string> names, List<object> vals, List<MySql.Data.MySqlClient.MySqlDbType> t);
-        IDbDataParameter[] GetParams(Dictionary<string, MySqlDbType> dic, List<object> vals);
-
-
+        IDbDataParameter GetParam(string name, object val, object t);
+        IDbDataParameter[] GetParams(List<string> names, List<object> vals, List<object> types);
+        IDbDataParameter[] GetParams(Dictionary<string, object> dic, List<object> vals);
     }
 }

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<col name="idx" type="string"></col>
+	<col name="title" type="float"></col>
+	<col name="cscore" type="int"></col>
+	<col name="datetime" type="datetime"></col>
+</configuration>

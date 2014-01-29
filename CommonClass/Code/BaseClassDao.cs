@@ -58,7 +58,7 @@ namespace CommonClass
             vals.Add(ci.OrderIdx);
             vals.Add(ci.SiteID);
             vals.Add(ci.Url);
-            List<DbType> ts = new List<DbType>();
+            List<object> ts = new List<object>();
             ts.Add(DbType.Int32);
             ts.Add(DbType.String);
             ts.Add(DbType.Int32);
@@ -125,7 +125,7 @@ namespace CommonClass
             vals.Add(ci.OrderIdx);
             vals.Add(ci.SiteID);
             vals.Add(ci.Url);
-            List<DbType> ts = new List<DbType>();
+            List<object> ts = new List<object>();
             ts.Add(DbType.String);
             ts.Add(DbType.Int32);
             ts.Add(DbType.Int32);

@@ -157,7 +157,7 @@ namespace CommonClass
             vals.Add(ci.OrderIdx);
             vals.Add(ci.SiteID);
             vals.Add(ci.Url);
-            List<MySqlDbType> ts = new List<MySqlDbType>();
+            List<object> ts = new List<object>();
             ts.Add(MySqlDbType.Int32);
             ts.Add(MySqlDbType.String);
             ts.Add(MySqlDbType.Int32);
@@ -210,7 +210,7 @@ namespace CommonClass
             vals.Add(ci.OrderIdx);
             vals.Add(ci.SiteID);
             vals.Add(ci.Url);
-            List<MySqlDbType> ts = new List<MySqlDbType>();
+            List<object> ts = new List<object>();
             ts.Add(MySqlDbType.String);
             ts.Add(MySqlDbType.Int32);
             ts.Add(MySqlDbType.Int32);

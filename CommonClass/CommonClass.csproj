@@ -63,6 +63,7 @@
     <Content Include="API\WebForm1.aspx" />
     <Content Include="App_Data\class.mdb" />
     <Content Include="API\Test.aspx" />
+    <Content Include="App_Data\DbMap\XMLFile1.xml" />
     <Content Include="Code\nq_mysql.sql" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -90,6 +91,7 @@
     <Compile Include="Code\BaseClassDao.cs" />
     <Compile Include="Code\MysqlManager\MySqlClass.cs" />
     <Compile Include="Code\db\MySqlDB.cs" />
+    <Compile Include="Code\SqlBuilder.cs" />
     <Compile Include="Domain\Article.cs" />
     <Compile Include="Domain\ClassInfo.cs" />
     <Compile Include="Code\Contract\IDb.cs" />

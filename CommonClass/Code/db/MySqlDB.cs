@@ -16,6 +16,8 @@ namespace CommonClass
 
         MySqlConnection GetConnection()
         {
+            if (string.IsNullOrEmpty(ConnStr))
+                throw new ArgumentNullException("'ConnStr' is null!k");
             return new MySqlConnection(this.ConnStr);
         }
 
@@ -74,14 +76,14 @@ namespace CommonClass
            ;
             set;
         }
-        public IDbDataParameter GetParam(string name, object val, MySqlDbType t)
+        public IDbDataParameter GetParam(string name, object val, object t)
         {
             MySqlParameter p = new MySqlParameter(name, val);
-            p.MySqlDbType = t;
+            p.MySqlDbType = (MySqlDbType)t;
             return p;
         }
 
-        public IDbDataParameter[] GetParams(List<string> names, List<object> vals, List<MySqlDbType> t)
+        public IDbDataParameter[] GetParams(List<string> names, List<object> vals, List<object> t)
         {
             IDbDataParameter[] arr = new MySqlParameter[names.Count];
             if (names.Count != vals.Count && names.Count != t.Count) throw new ApplicationException("参数不匹配");
@@ -92,21 +94,11 @@ namespace CommonClass
             return arr;
         }
 
-        public IDbDataParameter GetParam(string name, object val, DbType t)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IDbDataParameter[] GetParams(List<string> names, List<object> vals, List<DbType> t)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IDbDataParameter[] GetParams(Dictionary<string, MySqlDbType> dic, List<object> vals)
+        public IDbDataParameter[] GetParams(Dictionary<string, object> dic, List<object> vals)
         {
             IDbDataParameter[] arr = new MySqlParameter[dic.Count];
             int i = 0;
-            foreach (KeyValuePair<string, MySqlDbType> item in dic)
+            foreach (KeyValuePair<string, object> item in dic)
             {
                 arr[i] = GetParam(item.Key, vals[i], item.Value);
                 i++;
