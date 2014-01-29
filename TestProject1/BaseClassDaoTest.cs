@@ -231,10 +231,27 @@ namespace TestProject1
         [TestMethod]
         public void TestDeleteArtInfo()
         {
-            MySqlArticle msa = new MySqlArticle(str);
-            msa.Delete(1);
+            //  MySqlArticle msa = new MySqlArticle(str);
+            //  msa.Delete(1);
+            SqlBuilder sb = new SqlBuilder(1, "XMLFile1");
+            Person ppp=new Person
+            {
+                birth = DateTime.Now,
+                idx = 1,
+                score = 5677,
+                title = "this is title"
+            };
+            //Console.WriteLine(sb.Insert<Person>(ppp));
+            Console.WriteLine(sb.Update<Person>(ppp));
         }
+    }
 
 
+    public class Person
+    {
+        public int idx { get; set; }
+        public string title { get; set; }
+        public int score { get; set; }
+        public DateTime birth { get; set; }
     }
 }

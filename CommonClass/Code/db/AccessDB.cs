@@ -53,24 +53,20 @@ namespace CommonClass
             set;
         }
 
-
-      
-
         public OleDbConnection GetConn()
         {
 
             return new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + this.ConnStr);
         }
 
-        public IDbDataParameter GetParam(string name, object val, DbType t)
+        public IDbDataParameter GetParam(string name, object val, object t)
         {
             OleDbParameter p = new OleDbParameter(name, val);
-            p.DbType = t;
+            p.DbType = (DbType)t;
             return p;
         }
 
-
-        public IDbDataParameter[] GetParams(List<string> names, List<object> vals, List<DbType> t)
+        public IDbDataParameter[] GetParams(List<string> names, List<object> vals, List<object> t)
         {
             IDbDataParameter[] arr = new OleDbParameter[names.Count];
             //  IDbDataParameter[] psa=new OleDbParameter[]();
@@ -78,6 +74,18 @@ namespace CommonClass
             for (int i = 0; i < names.Count; i++)
             {
                 arr[i] = GetParam(names[i], vals[i], t[i]);
+            }
+            return arr;
+        }
+
+        public IDbDataParameter[] GetParams(Dictionary<string, object> dic, List<object> vals)
+        {
+            IDbDataParameter[] arr = new OleDbParameter[dic.Count];
+            int i = 0;
+            foreach (KeyValuePair<string, object> item in dic)
+            {
+                arr[i] = GetParam(item.Key, vals[i], item.Value);
+                i++;
             }
             return arr;
         }
@@ -93,35 +101,13 @@ namespace CommonClass
             cmd.Connection.Close();
             if (obj != null && obj != DBNull.Value) return obj;
             return null;
-
-
         }
-
-
         public int ExecScalarInt(string sql, params IDataParameter[] p)
         {
             object obj = ExecScalar(sql, p);
             if (obj == null) return -1;
             return int.Parse(obj.ToString());
         }
-
-
-        public IDbDataParameter GetParam(string name, object val, MySql.Data.MySqlClient.MySqlDbType t)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IDbDataParameter[] GetParams(List<string> names, List<object> vals, List<MySql.Data.MySqlClient.MySqlDbType> t)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public IDbDataParameter[] GetParams(Dictionary<string, MySql.Data.MySqlClient.MySqlDbType> dic, List<object> vals)
-        {
-            throw new NotImplementedException();
-        }
-
 
         public int ExecNonQuery(DbConnection conn, string sql, params IDataParameter[] p)
         {

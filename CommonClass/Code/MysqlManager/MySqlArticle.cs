@@ -45,7 +45,7 @@ url=?url,click=?click,authorid=?authorid,cid=?cid,cp1=?cp1,cp2=?cp2,indate=?inda
             {
                 art.Title,art.Content,art.Icon,art.Url,art.Click,art.AuthorID,art.CID,art.CP1,art.CP2,art.InDate,art.Kwd,art.Desc
             };
-            List<MySqlDbType> ts = new List<MySqlDbType>()
+            List<object> ts = new List<object>()
             {
                 MySqlDbType.VarChar,MySqlDbType.VarChar,MySqlDbType.VarChar,MySqlDbType.VarChar,MySqlDbType.Int32,
                 MySqlDbType.Int32,MySqlDbType.Int32,MySqlDbType.Int32,MySqlDbType.Int32,
@@ -65,7 +65,7 @@ url=?url,click=?click,authorid=?authorid,cid=?cid,cp1=?cp1,cp2=?cp2,indate=?inda
             int result = 0;
             using (conn)
             {
-                Dictionary<string, MySqlDbType> dic = new Dictionary<string, MySqlDbType>();
+                Dictionary<string, object> dic = new Dictionary<string, object>();
                 dic.Add("?title", MySqlDbType.VarChar);
                 dic.Add("?content", MySqlDbType.VarChar);
                 dic.Add("?icon", MySqlDbType.VarChar);

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<col name="idx" type="int" ></col>
+	<col name="title" type="string"></col>
+	<col name="score" type="int"></col>
+	<col name="birth" type="datetime" ></col>
+</configuration>

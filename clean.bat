@@ -4,4 +4,5 @@ rd /s /q CommonClass\bin
 rd /s /q TestResults
 rd /s /q TestProject1\obj
 rd /s /q TestProject1\bin
+del /s /q *.suo
 pause
