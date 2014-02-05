@@ -24,6 +24,7 @@ namespace CommonClass
 
         public string Kwd { get; set; }
         public string Desc { get; set; }
+        public int IsTop { get; set; }
 
     }
 }

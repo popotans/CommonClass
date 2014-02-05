@@ -60,6 +60,10 @@ namespace CommonClass
                 a.Click = int.Parse(dr["click"].ToString());
             }
             else a.Click = 0;
+            if (dr["istop"] != null && dr["istop"] != DBNull.Value)
+            {
+                a.IsTop = int.Parse(dr["istop"].ToString());
+            }
 
             if (dr["indate"] != null && dr["indate"] != DBNull.Value)
             {
@@ -90,6 +94,8 @@ namespace CommonClass
                 a.CP2 = int.Parse(dr["cp2"].ToString());
             }
             else a.CP2 = 0;
+            a.Kwd = dr["kwd"].ToString();
+            a.Desc = dr["desc"].ToString();
 
 
             return a;

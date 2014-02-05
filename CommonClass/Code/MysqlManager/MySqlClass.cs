@@ -268,6 +268,7 @@ namespace CommonClass
   `indate` datetime NOT NULL,
   `kwd` varchar(200) default NULL,
   `desc` varchar(300) default NULL,
+  `istop` int default 0,
   PRIMARY KEY  (`idx`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ");

@@ -35,21 +35,22 @@ namespace CommonClass
         {
             if (art.IDx <= 0) throw new Exception("no such article!");
             string sql = string.Format(@"update `article` set title=?title,content=?content,icon=?icon,
-url=?url,click=?click,authorid=?authorid,cid=?cid,cp1=?cp1,cp2=?cp2,indate=?indate,kwd=?kwd,`desc`=?desc where idx={0}", art.IDx.ToString());
+url=?url,click=?click,authorid=?authorid,cid=?cid,cp1=?cp1,cp2=?cp2,indate=?indate,kwd=?kwd,`desc`=?desc,istop=?istop where idx={0}", art.IDx.ToString());
             //db.ExecNonQuery(
             List<string> names = new List<string>()
             {
-                "?title","?content","?icon","?url","?click","?authorid","?cid","?cp1","?cp2","?indate","?kwd","?desc"
+                "?title","?content","?icon","?url","?click","?authorid","?cid","?cp1","?cp2","?indate","?kwd","?desc","?istop"
             };
             List<object> vals = new List<object>()
             {
-                art.Title,art.Content,art.Icon,art.Url,art.Click,art.AuthorID,art.CID,art.CP1,art.CP2,art.InDate,art.Kwd,art.Desc
+                art.Title,art.Content,art.Icon,art.Url,art.Click,art.AuthorID,art.CID,art.CP1,art.CP2,art.InDate,art.Kwd,art.Desc,
+                art.IsTop
             };
             List<object> ts = new List<object>()
             {
                 MySqlDbType.VarChar,MySqlDbType.VarChar,MySqlDbType.VarChar,MySqlDbType.VarChar,MySqlDbType.Int32,
                 MySqlDbType.Int32,MySqlDbType.Int32,MySqlDbType.Int32,MySqlDbType.Int32,
-                MySqlDbType.Datetime,MySqlDbType.VarChar,MySqlDbType.VarChar
+                MySqlDbType.Datetime,MySqlDbType.VarChar,MySqlDbType.VarChar,MySqlDbType.Int32
             };
             IDbDataParameter[] idp = db.GetParams(names, vals, ts);
             db.ExecNonQuery(sql, idp);
@@ -59,8 +60,8 @@ url=?url,click=?click,authorid=?authorid,cid=?cid,cp1=?cp1,cp2=?cp2,indate=?inda
         public int Insert(Article art)
         {
             DbConnection conn = db.GetConn();
-            string insert = @"insert into `article`(title,content,icon,url,click,authorid,cid,cp1,cp2,indate,kwd,`desc`)values(?title,?content,?icon,?url,?click,
-?authorid,?cid,?cp1,?cp2,?indate,?kwd,?desc)";
+            string insert = @"insert into `article`(title,content,icon,url,click,authorid,cid,cp1,cp2,indate,kwd,`desc`,`istop`)values(?title,?content,?icon,?url,?click,
+?authorid,?cid,?cp1,?cp2,?indate,?kwd,?desc,?istop)";
             string max = @"select idx from `article` order by `idx` desc limit 0,1 ";
             int result = 0;
             using (conn)
@@ -78,6 +79,7 @@ url=?url,click=?click,authorid=?authorid,cid=?cid,cp1=?cp1,cp2=?cp2,indate=?inda
                 dic.Add("?indate", MySqlDbType.Datetime);
                 dic.Add("?kwd", MySqlDbType.VarChar);
                 dic.Add("?desc", MySqlDbType.VarChar);
+                dic.Add("?istop", MySqlDbType.Int32);
                 List<object> vals = new List<object>();
                 vals.Add(art.Title);
                 vals.Add(art.Content);
@@ -91,6 +93,7 @@ url=?url,click=?click,authorid=?authorid,cid=?cid,cp1=?cp1,cp2=?cp2,indate=?inda
                 vals.Add(art.InDate);
                 vals.Add(art.Kwd);
                 vals.Add(art.Desc);
+                vals.Add(art.IsTop);
                 IDbDataParameter[] arr = db.GetParams(dic, vals);
                 db.ExecNonQuery(conn, insert, arr);
                 result = db.ExecScalarInt(conn, max);
